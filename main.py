@@ -1,7 +1,7 @@
 import os
 from PIL import Image
 
-target_dir = 'C:/dir'
+folder = 'C:/dir'
 
 def conv(folder):
     for fileN in os.listdir(folder):
@@ -12,12 +12,13 @@ def conv(folder):
             if img.mode in ('RGBA', 'P'):
                 img = img.convert('RGB')
             
-            new_fileN = os.path.splitext(filename)[0] + '.jpg'
+            new_fileN = os.path.splitext(fileN)[0] + '.jpg'
             new_fileP = os.path.join(folder, new_fileN)
             
-            img.save(new_file_path, 'JPEG')
-            print(f'Converted {filename} to {new_filename}')
-            os.remove(file_path)
-            print(f'Deleted original file: {filename}')
+            img.save(new_fileN, 'JPEG')
+            print(f'Converted {fileN} to {new_fileN}')
+            os.remove(fileP)
+            print(f'Deleted original file: {fileN}')
 
-conv(target_dir)
+conv(folder)
+
